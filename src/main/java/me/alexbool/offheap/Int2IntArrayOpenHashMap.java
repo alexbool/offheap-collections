@@ -48,6 +48,21 @@ public class Int2IntArrayOpenHashMap implements Map<Integer, int[]> {
 
     @Override
     public boolean containsKey(Object key) {
+        if (key instanceof Integer) {
+            return containsKey(((Integer) key).intValue());
+        } else {
+            return false;
+        }
+    }
+
+    public boolean containsKey(int k) {
+        // The starting point.
+        int pos = (HashCommon.murmurHash3((k) ^ mask)) & mask;
+        // There's always an unused entry.
+        while (isUsedAt(pos)) {
+            if (getKeyAt(pos) == k) return true;
+            pos = (pos + 1) & mask;
+        }
         return false;
     }
 

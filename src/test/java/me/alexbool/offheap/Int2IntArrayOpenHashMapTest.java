@@ -22,4 +22,12 @@ public class Int2IntArrayOpenHashMapTest {
         map.put(1, new int[] {});
         map.put(1, new int[] {});
     }
+
+    @Test
+    public void containsKey() {
+        Int2IntArrayOpenHashMap map = new Int2IntArrayOpenHashMap(2, 10);
+        Assert.assertFalse(map.containsKey(1));
+        map.put(1, new int[] { 1, 2, 3, 4 });
+        Assert.assertTrue(map.containsKey(1));
+    }
 }
