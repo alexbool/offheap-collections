@@ -43,7 +43,7 @@ public class Int2IntArrayOpenHashMap implements Map<Integer, int[]> {
 
     @Override
     public boolean isEmpty() {
-        return size() == 0;
+        return size == 0;
     }
 
     @Override
@@ -79,7 +79,7 @@ public class Int2IntArrayOpenHashMap implements Map<Integer, int[]> {
 
     @Override
     public int[] put(Integer key, int[] value) {
-        return put((int) key, value);
+        return put(key.intValue(), value);
     }
 
     public int[] put(int k, int[] v) {
