@@ -74,8 +74,7 @@ public class Int2IntArrayOpenHashMap implements Map<Integer, int[]> {
     @Override
     public int[] get(Object key) {
         if (key instanceof Integer) {
-            int intKey = (Integer) key;
-            return get(intKey);
+            return get(((Integer) key).intValue());
         } else {
             return null;
         }
