@@ -68,7 +68,7 @@ public class Int2IntArrayOpenHashMap implements Map<Integer, int[]> {
 
     @Override
     public boolean containsValue(Object value) {
-        return false;
+        throw new UnsupportedOperationException("ContainsValue is not supported");
     }
 
     @Override
