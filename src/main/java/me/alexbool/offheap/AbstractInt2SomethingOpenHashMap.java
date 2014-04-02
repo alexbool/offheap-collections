@@ -40,7 +40,7 @@ public abstract class AbstractInt2SomethingOpenHashMap<T> implements Map<Integer
 
     public boolean containsKey(int k) {
         // The starting point.
-        int pos = (HashCommon.murmurHash3((k) ^ mask)) & mask;
+        int pos = intHash(k);
         // There's always an unused entry.
         while (isUsedAt(pos)) {
             if (getKeyAt(pos) == k) return true;
@@ -86,5 +86,9 @@ public abstract class AbstractInt2SomethingOpenHashMap<T> implements Map<Integer
         for (Map.Entry<? extends Integer, ? extends T> e : m.entrySet()) {
             put(e.getKey(), e.getValue());
         }
+    }
+
+    protected int intHash(int k) {
+        return (HashCommon.murmurHash3((k) ^ mask)) & mask;
     }
 }

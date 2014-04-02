@@ -5,8 +5,6 @@ import java.nio.IntBuffer;
 import java.util.Collection;
 import java.util.Set;
 
-import it.unimi.dsi.fastutil.HashCommon;
-
 public class Int2IntArrayOpenHashMap extends AbstractInt2SomethingOpenHashMap<int[]> {
 
     protected final IntBuffer valueOffsets;
@@ -38,7 +36,7 @@ public class Int2IntArrayOpenHashMap extends AbstractInt2SomethingOpenHashMap<in
 
     public int[] get(int k) {
         // The starting point.
-        int pos = (HashCommon.murmurHash3((k) ^ mask)) & mask;
+        int pos = intHash(k);
         // There's always an unused entry.
         while (isUsedAt(pos)) {
             if (getKeyAt(pos) == k) return getValueAt(pos);
@@ -54,7 +52,7 @@ public class Int2IntArrayOpenHashMap extends AbstractInt2SomethingOpenHashMap<in
 
     public int[] put(int k, int[] v) {
         // The starting point.
-        int pos = (HashCommon.murmurHash3(k ^ mask)) & mask;
+        int pos = intHash(k);
         // There's always an unused entry.
         while (isUsedAt(pos)) {
             if (getKeyAt(pos) == k) {
