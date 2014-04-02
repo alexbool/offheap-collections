@@ -73,6 +73,13 @@ public abstract class AbstractInt2SomethingOpenHashMap<T> implements Map<Integer
         used.put(index, (byte) (bits | bitMask));
     }
 
+    protected void setNotUsedAt(int pos) {
+        int index = pos / 8;
+        byte bits = used.get(index);
+        byte bitMask = (byte) ~(1 << (pos % 8));
+        used.put(index, (byte) (bits & bitMask));
+    }
+
     protected int getKeyAt(int pos) {
         return keys.get(pos);
     }
