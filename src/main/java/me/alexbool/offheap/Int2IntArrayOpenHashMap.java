@@ -1,12 +1,12 @@
 package me.alexbool.offheap;
 
-import it.unimi.dsi.fastutil.HashCommon;
-
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+
+import it.unimi.dsi.fastutil.HashCommon;
 
 public class Int2IntArrayOpenHashMap implements Map<Integer, int[]> {
 
@@ -130,17 +130,17 @@ public class Int2IntArrayOpenHashMap implements Map<Integer, int[]> {
 
     @Override
     public Set<Integer> keySet() {
-        return null;
+        throw new UnsupportedOperationException("keySet is not supported");
     }
 
     @Override
     public Collection<int[]> values() {
-        return null;
+        throw new UnsupportedOperationException("values is not supported");
     }
 
     @Override
     public Set<Entry<Integer, int[]>> entrySet() {
-        return null;
+        throw new UnsupportedOperationException("entrySet is not supported");
     }
 
     protected boolean isUsedAt(int pos) {
