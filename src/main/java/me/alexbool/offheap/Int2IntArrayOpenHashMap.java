@@ -114,13 +114,15 @@ public class Int2IntArrayOpenHashMap implements Map<Integer, int[]> {
     }
 
     @Override
-    public int[] remove(Object key) {
-        throw new UnsupportedOperationException("Remove is not supported");
+    public void putAll(Map<? extends Integer, ? extends int[]> m) {
+        for (Map.Entry<? extends Integer, ? extends int[]> e : m.entrySet()) {
+            put(e.getKey(), e.getValue());
+        }
     }
 
     @Override
-    public void putAll(Map<? extends Integer, ? extends int[]> m) {
-
+    public int[] remove(Object key) {
+        throw new UnsupportedOperationException("Remove is not supported");
     }
 
     @Override
