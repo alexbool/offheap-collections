@@ -30,4 +30,22 @@ public class Int2IntArrayOpenHashMapTest {
         map.put(1, new int[] { 1, 2, 3, 4 });
         Assert.assertTrue(map.containsKey(1));
     }
+
+    @Test
+    public void bigMap() {
+        final int mapSize = 500000;
+        final int arraySize = 10;
+        Int2IntArrayOpenHashMap map = new Int2IntArrayOpenHashMap(mapSize, mapSize * arraySize);
+        int[] array = new int[arraySize];
+        for (int i = 0; i < arraySize; i++) {
+            array[i] = i;
+        }
+        for (int i = 0; i < mapSize; i++) {
+            map.put(i, array);
+        }
+
+        for (int i = 0; i < mapSize; i++) {
+            Assert.assertArrayEquals(array, map.get(i));
+        }
+    }
 }

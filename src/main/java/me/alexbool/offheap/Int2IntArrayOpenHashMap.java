@@ -31,7 +31,7 @@ public class Int2IntArrayOpenHashMap implements Map<Integer, int[]> {
         this.valueOffsets = ByteBuffer.allocateDirect(n * SIZE_OF_INT).asIntBuffer();
         this.valueSizes = ByteBuffer.allocateDirect(n * SIZE_OF_INT).asIntBuffer();
         this.values = ByteBuffer.allocateDirect(totalValues * SIZE_OF_INT).asIntBuffer();
-        this.used = ByteBuffer.allocateDirect((int) Math.ceil((double) n / (8 * SIZE_OF_INT)));
+        this.used = ByteBuffer.allocateDirect((int) Math.ceil((double) n / 8));
         this.size = 0;
         this.maxOffset = 0;
     }
